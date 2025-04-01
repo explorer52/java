@@ -71,7 +71,7 @@
 
 <ul class="product-list">
     <li th:each="item: ${items}">
-        <img th:src="${item.imgURL}" class="product-image">
+        <img th:src="${item.imgURL}" class="product-image" >
         <div class="product-info">
             <h3 class="product-name" th:text="${item.name}"></h3>
             <p class="product-price" th:text="'₴' + ${item.priceUAH}"></p>

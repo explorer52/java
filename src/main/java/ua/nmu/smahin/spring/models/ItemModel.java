@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
@@ -21,11 +20,10 @@ public class ItemModel {
     private String imgURL;
 
     @Min(value = 0)
-    private Double price;
+    private Double priceUAH;
 
     @Min(value = 0)
-    @Max(value = 5)
-    private Double rating;
+    private Double priceUSD;
 
     public Long getId() {
         return id;
@@ -51,19 +49,19 @@ public class ItemModel {
         this.imgURL = imgURL;
     }
 
-    public Double getPrice() {
-        return price;
+    public Double getPriceUAH() {
+        return priceUAH;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setPriceUAH(Double priceUAH) {
+        this.priceUAH = priceUAH;
     }
 
-    public Double getRating() {
-        return rating;
+    public Double getPriceUSD() {
+        return priceUSD;
     }
 
-    public void setRating(Double rating) {
-        this.rating = rating;
+    public void setPriceUSD(Double priceUSD) {
+        this.priceUSD = priceUSD;
     }
 }

@@ -22,13 +22,7 @@ public class ExcelService {
     private void createCell(XSSFSheet sheet, Row row, int columnCount, Object value, CellStyle style) {
         sheet.autoSizeColumn(columnCount);
         Cell cell = row.createCell(columnCount);
-        if (value instanceof Long) {
-            cell.setCellValue((Long) value);
-        } else if (value instanceof Boolean) {
-            cell.setCellValue((Boolean) value);
-        } else {
-            cell.setCellValue((String) value);
-        }
+        cell.setCellValue(value.toString());
         cell.setCellStyle(style);
     }
     private void setFirstRow(XSSFWorkbook workbook) {
@@ -44,7 +38,8 @@ public class ExcelService {
         createCell(sheet, row, 0, "ID", style);
         createCell(sheet, row, 1, "Посилання на картинку", style);
         createCell(sheet, row, 2, "Назва", style);
-        createCell(sheet, row, 3, "Ціна", style);
+        createCell(sheet, row, 3, "Ціна UAH", style);
+        createCell(sheet, row, 4, "Ціна USD", style);
     }
 
     public void getReport(HttpServletResponse response) throws IOException {
@@ -55,7 +50,7 @@ public class ExcelService {
         XSSFSheet sheet = workbook.getSheet("Товари");
         CellStyle style = workbook.createCellStyle();
 
-        for (int i = 1; i<=itemList.size(); i++) {
+        for (int i = 1; i<=itemList.size()-1; i++) {
             Row row = sheet.createRow(i);
             int column = 0;
 
@@ -65,7 +60,9 @@ public class ExcelService {
             column++;
             createCell(sheet, row, column, itemList.get(i).getName(), style);
             column++;
-            createCell(sheet, row, column, itemList.get(i).getPrice(), style);
+            createCell(sheet, row, column, itemList.get(i).getPriceUAH(), style);
+            column++;
+            createCell(sheet, row, column, itemList.get(i).getPriceUSD(), style);
         }
 
         ServletOutputStream outputStream = response.getOutputStream();

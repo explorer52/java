@@ -67,14 +67,15 @@
 </head>
 <body>
 
-<button type="button" th:action="@{/excel}">Скачати звіт в форматі Excel</button>
+<form th:action="@{/excel}" method="get"><button type="submit">Скачати звіт в форматі Excel</button></form>
 
 <ul class="product-list">
     <li th:each="item: ${items}">
         <img th:src="${item.imgURL}" class="product-image">
         <div class="product-info">
             <h3 class="product-name" th:text="${item.name}"></h3>
-            <p class="product-price" th:text="'₴' + ${item.price}"></p>
+            <p class="product-price" th:text="'₴' + ${item.priceUAH}"></p>
+            <p class="product-price" th:text="'$' + ${item.priceUSD}"></p>
         </div>
     </li>
 

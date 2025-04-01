@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ua.nmu.smahin.spring.models.ItemModel;
 import ua.nmu.smahin.spring.services.ParseService;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -21,7 +22,7 @@ public class SearchController {
     }
 
     @PostMapping
-    public String searchPost(@RequestParam String query, Model model) {
+    public String searchPost(@RequestParam String query, Model model) throws IOException {
         List<ItemModel> itemList = parseService.parseByQuery(query);
         model.addAttribute("items", itemList);
         return "result";

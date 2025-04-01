@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Search results</title>
+    <style>
+.product-list {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 20px auto;
+  font-family: 'Arial', sans-serif;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin: 10px 0;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.product-item:hover {
+  transform: translateY(-3px);
+}
+
+.product-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.product-info {
+  flex-grow: 1;
+}
+
+.product-name {
+  font-size: 1.2em;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.product-price {
+  color: #2ecc71;
+  font-size: 1.4em;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .product-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-image {
+    margin-bottom: 15px;
+  }
+}
+</style>
+</head>
+<body>
+
+<button type="button" th:action="@{/excel}">Скачати звіт в форматі Excel</button>
+
+<ul class="product-list">
+    <li th:each="item: ${items}">
+        <img th:src="${item.imgURL}" class="product-image">
+        <div class="product-info">
+            <h3 class="product-name" th:text="${item.name}"></h3>
+            <p class="product-price" th:text="'₴' + ${item.price}"></p>
+        </div>
+    </li>
+
+</ul>
+
+</body>
+</html>

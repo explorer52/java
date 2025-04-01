@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Epicentr search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <h1>Epicentr search</h1>
+    <form action="#" th:action="@{/search}" method="post">
+        <input type="search" placeholder="Search..." name="query">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+</body>
+<style>
+ html {
+     background-color: #ccc;
+ }
+ form {
+     display: flex;
+     justify-content: center;
+     margin-top: 2em;
+ }
+ form input[type=search] {
+     border: solid 3px #fff;
+     box-sizing: border-box;
+     font-size: 2em;
+     height: 1.6em;
+     padding: 0.5em;
+     width: 60vw;
+ }
+ form button {
+     background: #2196F3;
+     border: none;
+     color: white;
+     cursor: pointer;
+     font-size: 1em;
+     padding: 1em;
+ }
+ h1 {
+     text-align: center;
+     font-family: Arial
+ }
+</style>
+</html>

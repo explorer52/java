@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import ua.nmu.smahin.spring.models.ItemModel;
 
 import java.io.IOException;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;

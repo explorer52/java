@@ -9,10 +9,6 @@ import org.springframework.stereotype.Service;
 import ua.nmu.smahin.spring.models.ItemModel;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -28,7 +24,6 @@ public class ParseService {
     ExchangeService exchangeService;
 
     private static final String epicenterURL = "https://epicentrk.ua/ua/search/";
-    private static final String privatbankURL = "https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5";
 
     public List<ItemModel> parseByQuery(String query) throws IOException {
         List<ItemModel> result = new ArrayList<>();
@@ -46,7 +41,6 @@ public class ParseService {
                 ItemModel itemModel = new ItemModel();
                 itemModel.setName(name);
                 itemModel.setPriceUAH(price);
-                NumberFormat formatter = new DecimalFormat("#0.00");
                 itemModel.setPriceUSD(Double.valueOf(String.format(Locale.US, "%.2f", price * exchangeService.getRate())));
                 itemModel.setImgURL(imgURL);
                 repository.add(itemModel);
